@@ -1,0 +1,24 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>WebPong</title>
+    <script type="text/javascript" src="./assetmanager.js"></script>
+    <script type="text/javascript" src="./gameengine.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
+	<script type="text/javascript" src="./boundingbox.js"></script>
+	<script type="text/javascript" src="./background.js"></script>
+	<script type="text/javascript" src="./ball.js"></script>
+	<script type="text/javascript" src="./animation.js"></script>
+	<script type="text/javascript" src="./pad.js"></script>
+</head>
+<body>
+    <div>This is a simulation of a pong game (player 1: top, player 2: bottom)</div>
+	<div>The game ends when one of the player reaches the score of 3 (although it can be changed in main via the winScore variable)</div>
+	<div>Speed and spawn direction of the ball is randomized at the start and every time a player scores.</div>
+	
+
+    <canvas id="gameWorld" width="600" height="800" style="border: 1px solid white; background: black"></canvas>
+</body>
+</html>
