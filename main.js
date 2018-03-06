@@ -8,7 +8,7 @@ var ASSET_MANAGER = new AssetManager();
 var gameover = false;
 var p1 = false;
 var p2 = false;
-var winScore = 3;
+var winScore = 5;
 
 ASSET_MANAGER.queueDownload("./img/background_600x800.png");
 ASSET_MANAGER.queueDownload("./img/game-over1.png");
