@@ -18,7 +18,7 @@ Pad.prototype.constructor = Pad;
 
 Pad.prototype.update = function () {
 	if (this.id === 1) {
-		if (this.target.y <= 120 && this.x !== this.target.x) {
+		if (this.target.y <= 180 && this.x !== this.target.x) {
 			if (this.target.x > this.x + this.width) {
 				this.x += 1 * this.speed;
 			} else if (this.target.x < this.x) {
@@ -28,7 +28,7 @@ Pad.prototype.update = function () {
 			}
 		}
 	} else if (this.id === 2) {
-		if (this.target.y >= 680 && this.x !== this.target.x) {
+		if (this.target.y >= 620 && this.x !== this.target.x) {
 			if (this.target.x > this.x + this.width) {
 				this.x += 1 * this.speed;
 			} else if (this.target.x < this.x) {
