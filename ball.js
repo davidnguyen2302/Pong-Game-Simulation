@@ -65,7 +65,7 @@ Ball.prototype.update = function () {
 				this.x = getRandomInt(600);
 				this.y = 400;
 				console.log("HIT TOP *****************************");
-				console.log("Ball's left =", this.x - this.radius);
+				/* console.log("Ball's left =", this.x - this.radius);
 				console.log("Ball's right =", this.x + this.radius);
 				console.log("Ball's top =", this.y - this.radius);
 				console.log("Ball's bot =", this.y + this.radius);
@@ -73,7 +73,7 @@ Ball.prototype.update = function () {
 				console.log("Pad's left =", topPad.x);
 				console.log("Pad's right =", topPad.x + topPad.width);
 				console.log("Pad's top =", topPad.y);
-				console.log("Pad's bot =", topPad.y + topPad.height);
+				console.log("Pad's bot =", topPad.y + topPad.height); */
 				botPad.score++;
 			}
 		}
@@ -86,7 +86,7 @@ Ball.prototype.update = function () {
 				this.x = getRandomInt(600);
 				this.y = 400;
 				console.log("HIT BOT *****************************");
-				console.log("Ball's left =", this.x - this.radius);
+				/* console.log("Ball's left =", this.x - this.radius);
 				console.log("Ball's right =", this.x + this.radius);
 				console.log("Ball's top =", this.y - this.radius);
 				console.log("Ball's bot =", this.y + this.radius);
@@ -94,7 +94,7 @@ Ball.prototype.update = function () {
 				console.log("Pad's left =", botPad.x);
 				console.log("Pad's right =", botPad.x + botPad.width);
 				console.log("Pad's top =", botPad.y);
-				console.log("Pad's bot =", botPad.y + botPad.height);
+				console.log("Pad's bot =", botPad.y + botPad.height); */
 				topPad.score++;
 			}
 		}
@@ -103,8 +103,8 @@ Ball.prototype.update = function () {
 	}
     this.velocity.x -= (1 - friction) * this.game.clockTick * this.velocity.x;
     this.velocity.y -= (1 - friction) * this.game.clockTick * this.velocity.y;
-	console.log("VELOCITY X: ", this.velocity.x);
-	console.log("VELOCITY Y: ", this.velocity.y);
+	//console.log("VELOCITY X: ", this.velocity.x);
+	//console.log("VELOCITY Y: ", this.velocity.y);
 	if (topPad.score >= winScore || botPad.score >= winScore) {
 		gameover = true;
 		if (topPad.score >= winScore && !p2) { 
