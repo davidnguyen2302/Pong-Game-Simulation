@@ -1,4 +1,4 @@
-// This game shell was happily copied from Googler Seth Ladd's "Bad Aliens" game and his Google IO talk in 2011
+ // This game shell was happily copied from Googler Seth Ladd's "Bad Aliens" game and his Google IO talk in 2011
 
 window.requestAnimFrame = (function () {
     return window.requestAnimationFrame ||
@@ -11,6 +11,14 @@ window.requestAnimFrame = (function () {
             };
 })();
 
+/* window.onload = function () {
+    console.log("starting up socket");
+	
+	var coordinates = [];
+
+	
+	
+}; */
 
 function Timer() {
     this.gameTime = 0;
@@ -39,12 +47,27 @@ function GameEngine() {
     this.surfaceHeight = null;
 }
 
-GameEngine.prototype.init = function (ctx) {
+GameEngine.prototype.init = function (ctx, save, load) {
     this.ctx = ctx;
+	this.save = save;
+	this.load = load;
     this.surfaceWidth = this.ctx.canvas.width;
     this.surfaceHeight = this.ctx.canvas.height;
     this.startInput();
     this.timer = new Timer();
+	
+	this.socket = io.connect("http://24.16.255.56:8888");
+
+    this.socket.on("connect", function () {
+        console.log("Socket connected.")
+    });
+    this.socket.on("disconnect", function () {
+        console.log("Socket disconnected.")
+    });
+    this.socket.on("reconnect", function () {
+        console.log("Socket reconnected.")
+    });
+	
     console.log('game initialized');
 }
 
@@ -81,7 +104,7 @@ GameEngine.prototype.startInput = function () {
     this.ctx.canvas.addEventListener("wheel", function (e) {
         //console.log(getXandY(e));
         that.wheel = e;
-        //       console.log(e.wheelDelta);
+        //console.log(e.wheelDelta);
         e.preventDefault();
     }, false);
 
@@ -91,7 +114,16 @@ GameEngine.prototype.startInput = function () {
         e.preventDefault();
     }, false);
 
+	this.load.addEventListener("click", function(e) {
+		that.socket.emit("load", { studentname: "Duc Nguyen", statename: "save" });
+	}, false);
+	
     console.log('Input started');
+}
+
+GameEngine.prototype.saveState = function (coordinates) {
+	this.socket.emit("save", { studentname: "Duc Nguyen", statename: "save", state: coordinates });
+	console.log("Saved state");
 }
 
 GameEngine.prototype.addEntity = function (entity) {

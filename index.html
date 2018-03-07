@@ -2,8 +2,42 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+.button {
+    background-color: #3CBC8D;
+    border: none;
+    color: white;
+    padding: 3px 23px;
+    text-align: center;
+    text-decoration: none;
+    float: left;
+	display: block;
+    font-size: 20px;
+    margin: 4px 2.5px;
+    cursor: pointer;
+	border-radius: 4px;
+}
+
+.the-max-score {
+	background-color: #ff0000;
+    color: white;
+	width: 105px;
+	height: 20px;
+	margin: 4px 2.5px;
+	border-radius: 4px;
+	padding: 3px 10px;
+}
+
+
+input[type=range] {
+  width: 150px;
+  height: 20px;
+}
+
+</style>
     <meta charset="utf-8">
-    <title>WebPong</title>
+    <title>Pong Simulation</title>
+	<script type="text/javascript" src="http://24.16.255.56:8888/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="./assetmanager.js"></script>
     <script type="text/javascript" src="./gameengine.js"></script>
     <script type="text/javascript" src="./main.js"></script>
@@ -12,13 +46,22 @@
 	<script type="text/javascript" src="./ball.js"></script>
 	<script type="text/javascript" src="./animation.js"></script>
 	<script type="text/javascript" src="./pad.js"></script>
+	
 </head>
 <body>
-    <div>This is a simulation of a pong game (player 1: top, player 2: bottom)</div>
-	<div>The game ends when one of the player reaches the score of 5 (although it can be changed in main via the winScore variable)</div>
-	<div>Speed and spawn direction of the ball is randomized at the start and every time a player scores.</div>
-	
-
-    <canvas id="gameWorld" width="600" height="800" style="border: 1px solid white; background: black"></canvas>
+    <div>This is a simulation of a pong game (player 1: top, player 2: bottom)<br>
+	The game ends when one of the player reaches the score of 5 (although it can be changed via slider)<br>
+	Speed and spawn direction of the ball is randomized at the start and every time a player scores.<br>
+	Press "SAVE" to save state of the game, "LOAD" to load the saved state, "RESTART" to start over.</div>
+    
+	<canvas id="gameWorld" width="600" height="800" style="border: 1px solid white; background: black"></canvas>
+	<br>
+	<button class="button" id="save">Save</button>
+	<button class="button" id="load">Load</button>
+	<button class="button" id="restart">Restart</button>
+	<form>
+	<input class="the-max-score" type="text" id="maxScore" value="MAX SCORE: 5" disabled="true">
+	<input type="range" id="slider" value="5" step="1" min="1" max="10" onchange="maxScore.value = 'MAX SCORE: ' + this.value">
+	</form>
 </body>
 </html>

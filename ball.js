@@ -58,43 +58,25 @@ Ball.prototype.update = function () {
         this.velocity.y = -this.velocity.y * friction;
         if (this.collideTop()) {
 			this.y = this.radius;
-			console.log("COLLIDED WITH TOP");
+			//console.log("COLLIDED WITH TOP");
 			if (this.boundingBox.hasCollided(topPad.boundingBox)) {
-				console.log("BOUNCED OFF PAD: ", topPad.id);
+				//console.log("BOUNCED OFF PAD: ", topPad.id);
 			} else {
 				this.x = width/2;
 				this.y = height/2;
-				console.log("HIT TOP *****************************");
-				/* console.log("Ball's left =", this.x - this.radius);
-				console.log("Ball's right =", this.x + this.radius);
-				console.log("Ball's top =", this.y - this.radius);
-				console.log("Ball's bot =", this.y + this.radius);
-				console.log("PAD  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", topPad.id);
-				console.log("Pad's left =", topPad.x);
-				console.log("Pad's right =", topPad.x + topPad.width);
-				console.log("Pad's top =", topPad.y);
-				console.log("Pad's bot =", topPad.y + topPad.height); */
+				//console.log("HIT TOP *****************************");
 				botPad.score++;
 			}
 		}
         if (this.collideBottom()) {
 			this.y = height - this.radius;
-			console.log("COLLIDED WITH BOT");
+			//console.log("COLLIDED WITH BOT");
 			if (this.boundingBox.hasCollided(botPad.boundingBox)) {
-				console.log("BOUNCED OFF PAD: ", botPad.id);
+				//console.log("BOUNCED OFF PAD: ", botPad.id);
 			} else {
 				this.x = width/2;
 				this.y = height/2;
-				console.log("HIT BOT *****************************");
-				/* console.log("Ball's left =", this.x - this.radius);
-				console.log("Ball's right =", this.x + this.radius);
-				console.log("Ball's top =", this.y - this.radius);
-				console.log("Ball's bot =", this.y + this.radius);
-				console.log("PAD  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", botPad.id);
-				console.log("Pad's left =", botPad.x);
-				console.log("Pad's right =", botPad.x + botPad.width);
-				console.log("Pad's top =", botPad.y);
-				console.log("Pad's bot =", botPad.y + botPad.height); */
+				//console.log("HIT BOT *****************************");
 				topPad.score++;
 			}
 		}
@@ -103,8 +85,6 @@ Ball.prototype.update = function () {
 	}
     this.velocity.x -= (1 - friction) * this.game.clockTick * this.velocity.x;
     this.velocity.y -= (1 - friction) * this.game.clockTick * this.velocity.y;
-	//console.log("VELOCITY X: ", this.velocity.x);
-	//console.log("VELOCITY Y: ", this.velocity.y);
 	if (topPad.score >= winScore || botPad.score >= winScore) {
 		gameover = true;
 		if (topPad.score >= winScore && !p2) { 
