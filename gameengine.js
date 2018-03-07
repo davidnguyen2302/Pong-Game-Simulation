@@ -11,15 +11,6 @@ window.requestAnimFrame = (function () {
             };
 })();
 
-/* window.onload = function () {
-    console.log("starting up socket");
-	
-	var coordinates = [];
-
-	
-	
-}; */
-
 function Timer() {
     this.gameTime = 0;
     this.maxStep = 0.05;
