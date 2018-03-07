@@ -5,7 +5,7 @@ var maxSpeed = 1000;
 function Ball(game, id) {
 	this.GOAnimation1 = new Animation(ASSET_MANAGER.getAsset("./img/game-over1.png"), 0, 0, 600, 800, 1, 1, true, false);
 	this.GOAnimation2 = new Animation(ASSET_MANAGER.getAsset("./img/game-over2.png"), 0, 0, 600, 800, 1, 1, true, false);
-	this.x = getRandomInt(600);
+	this.x = 300;
 	this.y = 400;
 	this.crossed = false;
 	this.id = id;
@@ -62,7 +62,7 @@ Ball.prototype.update = function () {
 			if (this.boundingBox.hasCollided(topPad.boundingBox)) {
 				console.log("BOUNCED OFF PAD: ", topPad.id);
 			} else {
-				this.x = getRandomInt(600);
+				this.x = 300;
 				this.y = 400;
 				console.log("HIT TOP *****************************");
 				/* console.log("Ball's left =", this.x - this.radius);
